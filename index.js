@@ -22,6 +22,12 @@ app.post('/courses', (req, res) => {
     res.send(courses);
 });
 
+app.put('/courses/:id',(req,res)=>{
+    const courseId = parseInt(req.params.id,10); 
+    const course = courses.find(c => c.id === courseId);
+    course.name = req.body.name;
+    res.json(course);
+})
 
 
 app.listen(3000,()=>{
