@@ -29,6 +29,14 @@ app.put('/courses/:id',(req,res)=>{
     res.json(course);
 })
 
+app.delete('/courses/:id',(req,res)=>{
+    const courseId = parseInt(req.params.id,10); 
+    const course = courses.findIndex(c => c.id === courseId);
+    const deletedCourse = courses.splice(courseId, 1);
+    res.json(deletedCourse[0]);
+    res.json(course);
+})
+
 
 app.listen(3000,()=>{
     console.log("Server started");
